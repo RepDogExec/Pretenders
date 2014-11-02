@@ -12,6 +12,7 @@ function GM:PlayerSpawn( ply )
     ply:SetWalkSpeed( 190 )  
     ply:SetRunSpeed ( 235 ) 
  
+	ply:SetModel("models/player/group01/male_07.mdl")
 end
 
 function GM:PlayerLoadout( ply )
