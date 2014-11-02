@@ -1,0 +1,11 @@
+"pretenders"
+{
+	"base"		"base"
+	"title"		"pretenders"
+	"maps"		"^bg_"
+	"menusystem"	"1"
+	"settings"
+	{
+
+	}
+}
