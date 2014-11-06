@@ -23,9 +23,9 @@ function GM:PlayerSpawn( ply )
 end
 
 function GM:PlayerLoadout( ply )
-	
 end
 
 function GM:PlayerInitialSpawn( ply )
 	   ply:PrintMessage( HUD_PRINTTALK, "Welcome, " .. ply:Name() .. "!" )
 end
+
