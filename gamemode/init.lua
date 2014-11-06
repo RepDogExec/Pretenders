@@ -9,7 +9,7 @@ function GM:PlayerSpawn( ply )
     ply:SetMaxHealth( 100, true )  
     ply:SetWalkSpeed( 190 )  
     ply:SetRunSpeed ( 235 ) 
-	ply:SetModel("models/player/dod_german.mdl")
+	ply:SetModel("models/player/phoenix.mdl")
 	
 	local item = ents.Create( "clothes" )
 	item:SetNWString( "name", "clothes" )
