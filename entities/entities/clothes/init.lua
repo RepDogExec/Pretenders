@@ -19,6 +19,7 @@ end
 function ENT:Use( activator, caller )
 	activator:SetModel("models/player/riot.mdl")
 	activator:PrintMessage( HUD_PRINTTALK, "Player " .. activator:Name() .. " pretended to be a cop!" )
+	self:Remove()
 end
 
 function ENT:Touch( ent )
