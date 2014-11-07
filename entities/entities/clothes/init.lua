@@ -8,6 +8,7 @@ function ENT:Initialize()
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
 	self.Entity:SetUseType(SIMPLE_USE)
+	self.Entity:SetName( "clothes" )
 	local phys = self.Entity:GetPhysicsObject()
 	if phys and phys:IsValid() then phys:EnableGravity(true) phys:Wake() end
 end

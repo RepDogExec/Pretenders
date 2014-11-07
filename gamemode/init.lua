@@ -1,7 +1,9 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
- 
+
 include( 'shared.lua' )
+
+util.AddNetworkString( "tooltip" )
 
 function GM:PlayerSpawn( ply )
     self.BaseClass:PlayerSpawn( ply )   
@@ -20,6 +22,21 @@ function GM:PlayerSpawn( ply )
 	item:SetItemName("clothes1")
 	item:Spawn()
 	item:Activate()
+end
+
+function GM:PlayerTick( ply, cmd ) 
+	local trace = {}
+	trace.start = ply:EyePos()
+	trace.endpos = trace.start + ply:GetAimVector() * 300
+	trace.filter = ply
+	local tr = util.TraceLine(trace)
+	
+	if (tr.HitWorld) then return end
+	if tr.Entity:IsValid() then
+		net.Start( "tooltip" )
+		net.WriteString( tr.Entity:GetName() )
+		net.Send( ply )
+	end
 end
 
 function GM:PlayerLoadout( ply )
