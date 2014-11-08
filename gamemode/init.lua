@@ -45,4 +45,3 @@ end
 function GM:PlayerInitialSpawn( ply )
 	   ply:PrintMessage( HUD_PRINTTALK, "Welcome, " .. ply:Name() .. "!" )
 end
-
