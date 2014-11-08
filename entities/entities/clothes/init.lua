@@ -20,20 +20,22 @@ function ENT:SetItemName( name )
 end
 
 function ENT:Use( activator, caller, useType, val )
-	if useType == USE_ON then
-		timer.Create( "DRESS_UP", 3, 1, function()
+	if activator:Team() == 1 then
+		if useType == USE_ON then
+			timer.Create( "DRESS_UP", 3, 1, function()
 				activator:SetModel("models/player/riot.mdl")
-			activator:PrintMessage( HUD_PRINTTALK, "Player " .. activator:Name() .. " pretended to be a cop!" )
-			self:Remove()
-		end)
-		net.Start( "use_progress" )
-		net.WriteBit( true )
-		net.Send( activator )
-	elseif useType == USE_OFF then
-		timer.Destroy( "DRESS_UP" )
-		net.Start( "use_progress" )
-		net.WriteBit( false )
-		net.Send( activator )
+				activator:PrintMessage( HUD_PRINTTALK, "Player " .. activator:Name() .. " pretended to be a cop!" )
+				self:Remove()
+			end)
+			net.Start( "use_progress" )
+			net.WriteBit( true )
+			net.Send( activator )
+		elseif useType == USE_OFF then
+			timer.Destroy( "DRESS_UP" )
+			net.Start( "use_progress" )
+			net.WriteBit( false )
+			net.Send( activator )
+		end
 	end
 end
 

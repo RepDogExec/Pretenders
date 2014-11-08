@@ -12,17 +12,19 @@ function GM:PlayerSpawn( ply )
 end
 
 function GM:PlayerTick( ply, cmd ) 
-	local trace = {}
-	trace.start = ply:EyePos()
-	trace.endpos = trace.start + ply:GetAimVector() * 300
-	trace.filter = ply
-	local tr = util.TraceLine(trace)
+	if ply:Team() == 1 then
+		local trace = {}
+		trace.start = ply:EyePos()
+		trace.endpos = trace.start + ply:GetAimVector() * 300
+		trace.filter = ply
+		local tr = util.TraceLine(trace)
 	
-	if (tr.HitWorld) then return end
-	if tr.Entity:IsValid() and tr.Entity:GetNWBool( "pickup" ) then
-		net.Start( "tooltip" )
-		net.WriteString( tr.Entity:GetName() )
-		net.Send( ply )
+		if (tr.HitWorld) then return end
+		if tr.Entity:IsValid() and tr.Entity:GetNWBool( "pickup" ) then
+			net.Start( "tooltip" )
+			net.WriteString( tr.Entity:GetName() )
+			net.Send( ply )
+		end
 	end
 end
 
