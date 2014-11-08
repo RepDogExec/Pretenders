@@ -30,7 +30,7 @@ net.Receive( "createStartMenu", function ( len, ply )
 	smFrame:SetVisible( true )
 	smFrame:SetDraggable( false )
 	smFrame:SetSizable(false)
-	smFrame:ShowCloseButton( true )
+	smFrame:ShowCloseButton( false )
 	smFrame:MakePopup( true )
 	
 	smPanelList = vgui.Create( "DPanelList", smFrame )
