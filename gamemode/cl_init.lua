@@ -1,12 +1,27 @@
 include( 'shared.lua' )
 
+local lastpos;
+
 function thirdPerson( ply, pos, ang, fov )
-	local view = {};
-	view.origin = pos - ( ang:Forward() * 100 );
-	view.angles = ang;
-	view.angles.p = ang.p - 10;
-	view.fov = fov;
-	return view;
+	local eyepos = ply:EyePos()
+	local angles = ply:GetAimVector():Angle()
+	local offset = Vector(50 + (ply:OBBMaxs().z - ply:OBBMins().z), 0, 10)
+	local t = {
+		start = eyepos,
+		endpos = eyepos
+			+ (angles:Forward() * -offset.x)
+			+ (angles:Right() * offset.y)
+			+ (angles:Up() * offset.z),
+		filter = ply
+	}
+	
+	local trace = util.TraceLine(t)
+	
+	local view = {}
+	view.origin = trace.HitPos + ply:GetForward() * 5
+	view.angles = ply:EyeAngles()
+	view.fov = fov
+	return GAMEMODE:CalcView( ply, view.origin, view.angles, view.fov )	
 end
 
 net.Receive( "tooltip", function( len, ply )
