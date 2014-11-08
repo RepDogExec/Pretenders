@@ -22,7 +22,6 @@ net.Receive( "tooltip", function( len, ply )
 	NotifyPanel:AddItem( lbl )
 end )
 
-<<<<<<< HEAD
 net.Receive( "createStartMenu", function ( len, ply )
 	local smFrame = vgui.Create( "DFrame" )
 	smFrame:SetPos( ScrW()/2 - 200, ScrH()/2 - 120)
@@ -61,8 +60,8 @@ net.Receive( "createStartMenu", function ( len, ply )
 	end
 	smPanelList:AddItem( smComboBox )
 	smPanelList:AddItem( smButton1 )
-	
-=======
+end)
+
 net.Receive( "use_progress", function ( len, ply )
 	local val = net.ReadBit()
 	if val == 1 then
@@ -80,7 +79,6 @@ net.Receive( "use_progress", function ( len, ply )
 		timer.Destroy( "PROGRESS_TIMER" )
 		DProgress:Remove()
 	end
->>>>>>> origin/master
 end)
 
 hook.Add( "CalcView", "ThirdPerson", thirdPerson );
