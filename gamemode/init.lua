@@ -31,6 +31,7 @@ end
 
 function GM:PlayerInitialSpawn( ply )
 	ply:PrintMessage( HUD_PRINTTALK, "Welcome, " .. ply:Name() .. "!" )
+	ply:SetTeam ( -1 )
 	net.Start( "createStartMenu" )
 	net.Send( ply )
 end

@@ -83,6 +83,10 @@ end)
 
 hook.Add( "CalcView", "ThirdPerson", thirdPerson );
 hook.Add( "ShouldDrawLocalPlayer", "MyShouldDrawLocalPlayer", function( ply )
-	 return true
+	if ply:Team() == 0 or ply:Team() == 1 then
+		return true
+	else
+		return false
+	end
 end )
 
