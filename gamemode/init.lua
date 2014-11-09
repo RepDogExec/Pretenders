@@ -2,6 +2,7 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 
 include( 'shared.lua' )
+include( 'player.lua' )
 
 util.AddNetworkString( "tooltip" )
 util.AddNetworkString( "createStartMenu" )
@@ -44,7 +45,8 @@ net.Receive( "spawnPlayer", function( len, ply )
     ply:SetMaxHealth( 100, true )  
     ply:SetWalkSpeed( 190 )  
     ply:SetRunSpeed ( 235 ) 
-	ply:SetTeam ( net.ReadInt( 32 ) )
+	ply:PrdsSetTeam ( net.ReadInt( 32 ) )
+	/*ply:SetTeam ( net.ReadInt( 32 ) )
 	if ( ply:Team() == 1) then
 		ply:SetModel("models/player/phoenix.mdl")
 		ply:Give("weapon_crowbar")
@@ -52,7 +54,7 @@ net.Receive( "spawnPlayer", function( len, ply )
 		ply:SetModel("models/player/riot.mdl")
 		ply:Give("weapon_pistol")
 		ply:Give("weapon_shotgun")
-	end
+	end*/
 	local item = ents.Create( "clothes" )
 	item:SetNWString( "name", "clothes" )
 	item:SetNWString( "itemName", name )
