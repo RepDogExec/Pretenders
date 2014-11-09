@@ -39,22 +39,12 @@ function GM:PlayerInitialSpawn( ply )
 	net.Send( ply )
 end
 
-net.Receive( "spawnPlayer", function( len, ply ) 
-	//self.BaseClass:PlayerSpawn( ply )   
+net.Receive( "spawnPlayer", function( len, ply )  
     ply:SetGravity  ( 1 )  
     ply:SetMaxHealth( 100, true )  
     ply:SetWalkSpeed( 190 )  
     ply:SetRunSpeed ( 235 ) 
 	ply:PrdsSetTeam ( net.ReadInt( 32 ) )
-	/*ply:SetTeam ( net.ReadInt( 32 ) )
-	if ( ply:Team() == 1) then
-		ply:SetModel("models/player/phoenix.mdl")
-		ply:Give("weapon_crowbar")
-	else
-		ply:SetModel("models/player/riot.mdl")
-		ply:Give("weapon_pistol")
-		ply:Give("weapon_shotgun")
-	end*/
 	local item = ents.Create( "clothes" )
 	item:SetNWString( "name", "clothes" )
 	item:SetNWString( "itemName", name )
